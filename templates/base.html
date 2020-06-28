@@ -1,0 +1,122 @@
+{% load static %} 
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>{% block title %}Туду-дуду{% endblock %}</title>
+		<link rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+			crossorigin="anonymous">
+		<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+			crossorigin="anonymous"></script>
+		<script
+			src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+			crossorigin="anonymous"></script>
+		<link href="{% static 'css/reset.min.css' %}" rel="stylesheet">
+		<link href="{% static 'css/styles.min.css' %}"  rel="stylesheet">
+		{% block extra_head %}
+		{% endblock %}
+	</head>
+	<body>
+		<div class="modal" id="modal">
+			<div class="modal__header">
+				<div class="modal__name"><p>Вход</p></div>
+				<span class="modal__close" id="close-button"></span>
+			</div>
+			<div class="modal__form">
+				<div class="modal-form__grup">
+					<p>Нет аккаунта?</p> Войдите через <a href="">ВКонтакте</a>
+					<p>Или </p><a href="{% url 'register' %}">зарегистрируйтесь</a>
+				</div>
+				<form action="{% url 'login' %}" method="POST">
+					<div class="modal-form__grup">
+						<input type="text" class="modal-form__input" name="username" placeholder=" ">
+						<label for="username" class="modal-form__label">Username:</label>
+					</div>
+					<div class="modal-form__grup">
+						<input type="password" class="modal-form__input" name="password" placeholder=" ">
+						<label for="password" class="modal-form__label">Пароль:</label>
+					</div>
+					{% csrf_token %}
+					<div>
+						<button type="submit" class="sign-button" href="">Войти</button>
+					</div>
+				</form>
+				&nbsp;
+				<p>Забыли пароль? Восстановите его <a href="{% url "password_reset" %}">здесь</a></p>
+			</div> 
+		</div>
+		<div class="modal__overlay" id="modal-overlay"></div>
+
+		<div class="drower close">
+			<nav>
+				<ul>
+					{% if user.is_authenticated %}
+						<li><a href="{% url 'profile' user.id %}">Профиль: {{user.username}}</a></li>
+						<li><a href="">Пополнить баланс</a></li>
+					{% endif %}
+					<li><a href="{% url 'list' %}">Главная</a><li>
+					<li><a href="{% url 'how-to-play' %}">Правила игры</a><li>
+					<li><a href="{% url 'play' %}">Играть</a><li>
+					{% if user.is_authenticated %}
+						<li><a href="{% url 'logout' %}">Выйти</a></li>
+					{% endif %}
+					
+				</ul>
+			</nav>
+		</div>
+
+		<header class="header">
+			<div class="container">
+				<div class="header__row">
+					<div class="header__menu-toggle">
+						<img src="{% static 'img/open-menu.png' %}" alt="" class="open-img">
+						<img src="{% static 'img/close.png' %}" alt="" class="close-img">
+					</div>
+					<div class="header__body">
+						<div class="header-item"><a href="{% url 'list' %}">Главная</a></div>
+						<div class="header-item"><a href="{% url 'how-to-play' %}">Правила игры</a></div>
+						<div class="header-item"><a href="{% url 'play' %}">Играть</a></div>
+						{% if user.is_authenticated %}
+							<div class="header-item"><a href="">Пополнить баланс</a></div>
+						{% endif %}
+					</div>
+					{% if user.is_authenticated %}
+						<div class="header-item">
+							<a href="{% url 'profile' user.username %}">{{user.username}}</a>
+							<span class="mobile-out">|</span>
+							<a class="mobile-out" href="{% url 'logout' %}">Выйти</a>
+						</div>
+					{% else %}
+						<div class="header-item" id="open-button"><a>Войти</a></div>
+					{% endif %}
+				</div>
+			</div>
+		</header>
+		<!-- &nbsp; -->
+		<div class="alert-block">
+			<div class="alert-block__row">
+				{% if messages %}
+					{% for message in messages %}
+						{% if message.tags == "error" %}
+							<div class="alert alert-danger">
+						{% else %}
+							<div class="alert alert-{{message.tags}}">
+						{% endif %}
+						{{ message }}
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+					{% endfor %}
+				{% endif%}
+			</div>
+		</div>
+		{% block main_content %}
+		{% endblock %}
+		<script src="{% static 'js/main1.js' %}"></script>
+		{% block scripts %}
+		{% endblock %}
+	</body>
+</html> 

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Вы вышли{% endblock %}
+
+{% block main_content %}
+
+<div class="log-out">
+	<div class="container">
+		<div class="log-out__row">
+			<div class="log-out__title">
+				<h1>Вы вышли.</h1>
+			</div>
+			<div class="log-out__subtitle">
+				<p>Но вы всегда можете:</p>
+				<ul>
+					<li>
+						<a href="{% url "login"%}">войти обратно в аккаунт</a>
+					</li>
+					<li>
+						<a href="{% url "list" %}">перейти на главную</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
+

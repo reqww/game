@@ -1,0 +1,93 @@
+.reg
+    padding: 50px 0
+    &__column
+        display: flex
+        flex-direction: column
+    &__title
+        text-align: center
+        font-size: 1.25rem
+        p 
+            margin-top: 2rem
+        span 
+            font-size: 2rem
+            position: relative
+            text-transform: uppercase
+            &::after
+                content: ''
+                position: absolute
+                top: 1rem
+                right: -4rem
+                width: 3rem
+                height: 2px
+                background: black
+            &::before
+                content: ''
+                position: absolute
+                top: 1rem
+                left: -4rem
+                width: 3rem
+                height: 2px
+                background: black
+    &__form
+        margin: 0 auto
+        margin-top: 2.5rem
+        text-align: center
+        p 
+            position: relative
+            margin-bottom: 32px
+            line-height: 25px
+        input
+            width: 250px
+            padding: 0 0 10px 0
+            border: none
+            border-bottom: 1px solid #e0e0e0 
+            background-color: transparent
+            outline: none
+            transition: 0.3s
+            &:focus
+                border-bottom: 1px solid #1a73a8 
+        label
+            position: absolute
+            top: -1rem
+            left: 10px
+            z-index: -1
+            color: #9e9e9e
+            transition: 0.3s
+
+
+.reg-complete
+    padding: 100px 0
+    &__row
+        display: flex
+        flex-direction: column
+        align-items: center
+    &__title
+        font-size: 2rem
+        margin-bottom: 2rem 
+    &__subtitle
+        font-size: 1.25rem
+
+.log-out
+    padding: 100px 0
+    &__row
+        display: flex
+        flex-direction: column
+        align-items: center
+    &__title
+        font-size: 2rem
+        margin-bottom: 2rem 
+    &__subtitle
+        font-size: 1.25rem
+        li 
+            margin: 2rem 0
+            list-style: circle inside
+
+.errorlist
+    font-size: 0.75rem
+    color: red
+    // margin-bottom: 1rem
+    position: relative
+    li 
+        position: absolute
+        right: -9rem
+

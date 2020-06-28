@@ -1,0 +1,44 @@
+.sign-button
+	padding: 10px 20px
+	border: none
+	border-radius: 5px
+	font-family: sans-serif
+	letter-spacing: 1px
+	font-size: 16px
+	color :#fff 
+	background-color: $blue
+	outline: none
+	cursor: pointer
+	transition: 0.3s
+	&:hover
+		background-color: rgba(0, 113, 240, 0.7)
+	&:disabled
+		background-color: rgba(0, 113, 240, 0.7)
+
+.choose-button
+	width: 5rem
+	height: 5rem
+	border: none
+	border-radius: 5px
+	background-color: #fff
+	outline: none
+	cursor: pointer
+	transition: 0.3s
+	border: 2px solid  $blue
+	&:hover
+		background-color: $blue
+	&:focus
+		outline: none
+	&:disabled
+		border: 2px solid #cb132d
+		background-color: #fff 
+		cursor: default
+	img
+		height: 2rem
+
+.chosen
+	background-color: $blue
+
+.chosen-two
+	background-color: $blue !important
+	border: 2px solid $blue !important

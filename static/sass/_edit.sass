@@ -1,0 +1,50 @@
+.edit
+    padding: 50px 0
+    &__column
+        display: flex
+        flex-direction: column
+        align-items: center
+    &__title
+        margin-bottom: 2rem
+        font-size: 2rem
+    &__text
+        // font-size: 1.25rem
+        color: #9e9e9e
+        position: absolute
+        top: 0rem
+        left: -10rem
+    &__form
+        text-align: center
+        p 
+            position: relative
+            margin-bottom: 32px
+            line-height: 25px
+        span 
+            display: none
+        input
+            width: 300px
+            padding: 0 0 10px 0
+            border: none
+            border-bottom: 1px solid #e0e0e0 
+            background-color: transparent
+            outline: none
+            transition: 0.3s
+            &:focus
+                border-bottom: 1px solid #1a73a8 
+        label
+            position: absolute
+            top: 0rem
+            left: -12rem
+            z-index: -1
+            color: #9e9e9e
+            transition: 0.3s
+        &__none
+            input
+                width: 300
+                border-bottom: none
+                &:focus
+                    border-bottom: none
+
+
+
+        

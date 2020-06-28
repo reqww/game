@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+
+{% load static %}
+ 
+
+{% block title %}
+	Удачной игры!
+{% endblock %} 
+
+{% block extra_head %}
+	<!-- <link rel="stylesheet" href="{% static 'css/style.css' %}"> -->
+{% endblock %}
+
+{% block main_content %}
+
+	<div class="play">
+		<div class="container">
+			<div class="play__row">
+				<div class="play__stat play-stat">
+					<div class="play__column">
+						<div class="play-stat__balance">
+							<input type="hidden" id="coins_hidden" value={{gm.coins}}>
+							<h1>Ваш баланс:<div id = "coins">{{gm.coins}}</div>Р</h1>
+						</div>
+						<div class="play-stat__text">
+							<h1 id = "header">Выберите сумму ставки</h1>
+						</div>
+						<div class="play-stat__btns play-btns">
+							<div class="play-btns__row">
+								<div class="play-btns__btn">
+									<input class="play-btns__input" id="radio-1" type="radio" name="radio" value="10" checked>
+									<label for="radio-1" class="play-btns__label play-btns__label__first">10Р</label>
+								</div>
+								<div class="play-btns__btn">
+									<input class="play-btns__input" id="radio-2" type="radio" name="radio" value="50">
+									<label for="radio-2" class="play-btns__label">50Р</label>
+								</div>
+								<div class="play-btns__btn">
+									<input class="play-btns__input" id="radio-3" type="radio" name="radio" value="100">
+									<label for="radio-3" class="play-btns__label">100Р</label>
+								</div>
+								<div class="play-btns__btn">
+									<input class="play-btns__input" id="radio-4" type="radio" name="radio" value="500">
+									<label for="radio-4" class="play-btns__label play-btns__label__last">500Р</label>
+								</div>
+							</div>
+						</div>
+						<div class="play-stat__result">
+							<p id = "result"></p>
+						</div>
+						<div class="play-stat__start">
+							<button class="sign-button play__start" id="play__start">Начать поиск игры</button>
+						</div>
+					</div>
+				</div>
+				<div class="play__players play-players">
+					<div class="countdown__wrapper">
+						<div class="countdown__vs">
+							VS
+						</div>
+						<div id="countdown" class="countdown">
+							<div class="countdown-number">
+								<span class="countdown-text">осталось</span>
+								<span class="seconds countdown-time"></span>
+								<span class="countdown-text">секунд</span>
+							</div>
+						</div>
+					</div>
+					<div class="play__score play-score">
+						<div class="play-score__title">Счет</div>
+						<div class="play-score__row">
+							<div class="play-score__item">
+								0
+							</div>
+							<p>:</p>
+							<div class="play-score__item">
+								0
+							</div>
+						</div>
+					</div>
+					<div class="play-players__row">
+						<div class="play__player play-player">
+							<div class="play-player__column">
+								<div class="play-player__name">
+									{{user}}
+								</div>
+								<div class="play-player__img">
+									{% if user.profile.get_url != None %}
+										<img src="{{ user.profile.avatar.url }}" >
+									{% else %}
+										<img src="{% static 'img/profile.jpg' %}" alt="">
+									{% endif %}	
+								</div>
+								<div class="play-player__choose">
+									<button class="choose-button" id='rock' value='Камень'><img src="{% static 'img/stone.png' %}" alt=""></button>
+									<button class="choose-button" id='scissors' value='Ножницы'><img src="{% static 'img/scissors.png' %}" alt=""></button>
+									<button class="choose-button" id="paper" value='Бумага'><img src="{% static 'img/paper.png' %}" alt=""></button>
+								</div>	
+							</div>
+						</div>
+						<div class="play__player play-player">
+							<div class="play-player__column">
+								<div class="play-player__name play-player__name__last">
+									Соперник
+								</div>
+								<div class="play-player__img play-player__img__last">
+									<img id = "pic" src="/media/anonym/profile.jpg" alt="">	
+								</div>
+								<div class="loader__wrapper">
+									<div class="loader">
+										<div></div>
+										<div></div>
+									</div>
+								</div>
+								</div>
+								<div class="play-player__choose">
+									<button class="choose-button" id='Камень-2'><img src="{% static 'img/stone.png' %}" alt=""></button>
+									<button class="choose-button" id='Ножницы-2'><img src="{% static 'img/scissors.png' %}" alt=""></button>
+									<button class="choose-button" id="Бумага-2"><img src="{% static 'img/paper.png' %}" alt=""></button>
+								</div>	
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
+{% endblock %}
+
+{% block scripts %}
+	<script src="{% static 'js/script1.js' %}"></script>
+{% endblock %}

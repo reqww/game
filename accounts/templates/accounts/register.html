@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Зарегистрироваться{% endblock %}
+
+{% block main_content %}
+	<div class="reg">
+		<div class="container">
+			<div class="reg__column">
+				<div class="reg__title">
+					<span>Создать аккаунт</span>
+					<p>Воспользуйтесь следующей формой:</p>
+				</div>
+				<div class="reg__form">
+					<form action="." method="post">
+						{{ user_form.as_p }}
+						{% csrf_token %}
+						
+						<div>
+							<button type="submit" class="sign-button" href="">Зарегистрироваться</button>
+						</div>
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

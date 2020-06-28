@@ -1,0 +1,45 @@
+.header
+	box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2)
+	padding: 22px 60px
+	font-size: 1.125rem
+	&__menu-toggle
+		display: none
+		position: fixed
+		top: 20px
+		left: 40px
+		font-size: 20px
+		cursor: pointer
+		color: #ffffff
+		z-index: 1010
+		transition: opacity, left .22s ease-in
+		img 
+			height: 20px
+			&:hover
+				opacity: 0.7
+				cursor: pointer
+	&__row
+		display: flex
+		justify-content: space-around
+	&__body
+		display: flex
+		justify-content: space-around
+		flex: 1 1 auto 
+		margin-right: 100px
+	&-item
+		a 
+			text-decoration: none
+			color: black
+			&:hover
+				color: $text-color-main
+				cursor: pointer
+
+.open 
+ left: 320px
+
+.close-img
+	display: none
+
+a.mobile-out
+	color: #cb132d !important
+	
+

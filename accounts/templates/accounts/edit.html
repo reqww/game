@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Изменить профиль{% endblock %}
+{% block main_content  %}
+	<div class="edit">
+		<div class="container">
+			<div class="edit__column">
+				<div class="edit__title">
+					<h1>Изменить профиль</h1>
+				</div>
+				<div class="edit__form">
+					<form action="." method="post" enctype="multipart/form-data">
+						{{ user_form.as_p }}
+						<div class="edit__form__none">
+							{{ profile_form.as_p }}
+						</div>
+						{% csrf_token %}
+						<button type="submit" class="sign-button">Сохранить</button>
+					</form>
+				</div>
+				<div class="edit__form">
+					<div class="edit__text">
+						<h2>Сменя пароля</h2>
+					</div>
+					<form action="{% url 'password_change' %}" method="post">
+						{% csrf_token %}
+						<p>
+							<input type="text" name="old_pass">
+							<label for="old_pass">Старый пароль:</label>
+						</p>
+						<p>
+							<input type="text" name="new_pass1">
+							<label for="new_pass1">Новый пароль:</label>
+						</p>
+						<p>
+							<input type="text" name="new_pass2">
+							<label for="new_pass2">Повторите новый пароль:</label>
+						</p>	
+						<button type="submit" class="sign-button" href="">Сменить</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

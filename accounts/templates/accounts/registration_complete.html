@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Ура! Успех{% endblock %}
+
+{% block main_content %}
+	<div class="reg-complete">
+		<div class="container">
+			<div class="reg-complete__row">
+				<div class="reg-complete__title">
+					<h1>Вы успешно зарегистрировались, {{ new_user.first_name }}!</h1>
+				</div>
+				<div class="reg-comlete__subtitle">
+					<p>Теперь вы можете <a href={% url "login"%}>войти</a> в аккаунт</p>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

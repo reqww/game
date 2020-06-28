@@ -1,0 +1,98 @@
+.modal 
+ position: fixed
+ top: 50%
+ left: 50%
+ transform: translate(-50%, -50%)
+ width: 500px
+ max-width: 100%
+ height: 600px
+ max-height: 100%
+ border: 1px solid black
+ z-index: 1011
+ background-color: #fff
+ display: none
+ border-radius: 5px
+ &__overlay
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  background-color: rgba(0, 0, 0, 0.7)
+  z-index: 1000 
+  display: none
+ &__header
+ 	padding: 20px 20px
+ 	display: flex
+ 	// justify-content: space-around
+ 	box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2)
+ &__name
+ 	text-transform: uppercase
+ 	flex: 1 1 auto
+ 	text-align: center
+ &__form
+ 	padding: 50px 0px 20px 0px
+ 	text-align: center
+ &__close
+		width: 16px
+		height: 16px
+		opacity: 1
+		position: relative
+		&:hover
+			opacity: 0.5
+			cursor: pointer
+		&:before
+			position: absolute
+			left: 7.5px
+			content: ' '
+			height: 17px
+			width: 2px
+			background-color: #333
+			transform: rotate(45deg)
+		&:after
+			position: absolute
+			left: 7.5px
+			content: ' '
+			height: 17px
+			width: 2px
+			background-color: #333
+			transform: rotate(-45deg)
+
+.modal-form
+	&__grup
+		position: relative
+		margin-bottom: 32px
+		line-height: 25px
+		a 
+			text-decoration: none
+			color: $blue
+			&:hover
+				color: rgba(0, 113, 240, 0.7)
+	&__input
+		width: 250px
+		padding: 0 0 10px 0
+		border: none
+		border-bottom: 1px solid #e0e0e0 
+		background-color: transparent
+		outline: none
+		transition: 0.3s
+		&:focus
+			border-bottom: 1px solid #1a73a8 
+			& ~ .modal-form__label
+				top: -18px
+				font-size: 12px
+				color: #e0e0e0
+		&:not(:placeholder-shown)
+			& ~ .modal-form__label
+				top: -18px
+				font-size: 12px
+				color: #e0e0e0
+	&__label
+		position: absolute
+		top: 0
+		left: 130px
+		z-index: -1
+		color: #9e9e9e
+		transition: 0.3s
+		&__reg
+			left: 10px 

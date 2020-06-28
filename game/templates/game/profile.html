@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+	Профиль {{ cur_user }}
+{% endblock %}
+
+{% block main_content %}
+
+<div class="profile">
+	<div class="container">
+		<div class="profile__column">
+			<div class="profile__title">Профиль</div>
+			<div class="profile__img">
+				{% if cur_user.profile.get_url != None %}
+					<img src="{{ cur_user.profile.avatar.url }}" class="img-fluid">
+				{% else %}
+					<img src="{% static 'img/profile.jpg' %}" alt="">
+				{% endif %}	
+			</div>
+			<div class="profile__name">{{cur_user.username}}</div>
+		</div>
+		<div class="profile__row">
+			<div class="profile__param">
+				<h1>{{total_games}}</h1>
+				<p>игр</p>
+			</div>
+			<div class="profile__param">
+				<h1>{{wins}}</h1>
+				<p>побед</p>
+			</div>
+			<div class="profile__param">
+				<h1>{{percentage}}%</h1>
+				<p>win-rate</p>
+			</div>
+			<div class="profile__param">
+				{% if user.id == cur_user.id %}
+					<h1>{{coins}}Р</h1>
+					<p>баланс</p>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+	{% if user.id == cur_user.id %}
+		<div class="profile__last">
+			{% if total_games > 0 %}
+				<p>Ваша последняя игра:
+					{% if last_game == "win" %}
+						Победа! +{{last_rate}}
+					{% elif last_game == "lose" %}
+						Поражение! -{{last_rate}}
+					{% else %}
+						Ничья!
+					{% endif %}		
+				</p>	
+			{% endif %}
+		</div>
+		<div class="profile__red">
+			<p>Вы можете <a href="{% url 'edit' %}">отредактировать</a> профиль</p>
+		</div>
+	{% endif %}
+</div>
+
+{% endblock %}
+
+
+				
+				
